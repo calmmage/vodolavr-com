@@ -7,7 +7,15 @@ import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/navbar"
 import { ParticleBackground } from "@/components/particle-background"
 import { ArrowRight, Calendar } from 'lucide-react'
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
+
+const heroBadges = [
+  { label: "AI", filter: "ai transformation" },
+  { label: "ML", filter: "fine-tuning" },
+  { label: "LLM", filter: "langchain" },
+  { label: "Data", filter: "data workflow" },
+  { label: "Auto", filter: "automation" },
+]
 
 const cases = [
   {
@@ -84,6 +92,27 @@ const tagGroups = {
 export default function HomePage() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
   const [showAllCases, setShowAllCases] = useState(false)
+  const [currentBadgeIndex, setCurrentBadgeIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const casesRef = useRef<HTMLElement>(null)
+
+  // Rotate badges every 2 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setCurrentBadgeIndex((prev) => (prev + 1) % heroBadges.length)
+        setIsAnimating(false)
+      }, 200)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const handleBadgeClick = () => {
+    const badge = heroBadges[currentBadgeIndex]
+    setSelectedTag(badge.filter)
+    casesRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
 
   const filteredCases = selectedTag ? cases.filter((c) => c.tags.includes(selectedTag)) : cases
 
@@ -96,7 +125,18 @@ export default function HomePage() {
       <section id="home" className="h-screen flex items-center justify-center px-6 lg:px-8">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center space-y-6">
-            <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-balance">VodoLavr</h1>
+            <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-balance flex items-center justify-center gap-4">
+              <span>VodoLavr</span>
+              <button
+                onClick={handleBadgeClick}
+                className={`inline-flex items-center justify-center min-w-[100px] lg:min-w-[120px] px-4 py-2 rounded-lg bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 hover:border-primary/60 transition-all duration-200 cursor-pointer ${
+                  isAnimating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
+                }`}
+                title={`Click to see ${heroBadges[currentBadgeIndex].label} cases`}
+              >
+                <span className="text-2xl lg:text-3xl font-bold">{heroBadges[currentBadgeIndex].label}</span>
+              </button>
+            </h1>
             <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto text-balance">
               We help companies integrate AI into their operations without the buzzwords
             </p>
@@ -246,7 +286,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="cases" className="py-20 px-6 lg:px-8 bg-accent/30">
+      <section id="cases" ref={casesRef} className="py-20 px-6 lg:px-8 bg-accent/30">
         <div className="container mx-auto max-w-7xl">
           {/* Mobile and Tablet Layout */}
           <div className="block xl:hidden">
