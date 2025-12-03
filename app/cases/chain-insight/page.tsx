@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft } from 'lucide-react'
 
-export default function SignalCase() {
+export default function ChainInsightCase() {
   return (
     <div className="min-h-screen">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -27,19 +27,19 @@ export default function SignalCase() {
 
           <div className="space-y-8">
             <div>
-              <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-balance">Signal</h1>
-              <p className="text-xl text-muted-foreground mb-6">an intelligent research assistant</p>
+              <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-balance">Chain Insight</h1>
+              <p className="text-xl text-muted-foreground mb-6">Automated Research Analyst</p>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary">langchain</Badge>
-                <Badge variant="secondary">ai transformation</Badge>
-                <Badge variant="secondary">data workflow</Badge>
+                <Badge variant="secondary">LLM</Badge>
+                <Badge variant="secondary">Web3</Badge>
+                <Badge variant="secondary">RAG</Badge>
               </div>
             </div>
 
             <div className="aspect-video w-full overflow-hidden rounded-lg bg-muted">
               <img
                 src="/images/design-mode/telegram-cloud-photo-size-2-5195277267301956973-y.jpg"
-                alt="Signal"
+                alt="Chain Insight"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -47,20 +47,19 @@ export default function SignalCase() {
             <div className="prose prose-invert max-w-none">
               <h2 className="text-2xl font-semibold mb-4">The Challenge</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                The core task was to synthesize insights from a chaotic mix of sources: fast-moving news feeds, in-depth research reports, and some internal knowledge. Each source has unique characteristics, and a system that treats them all the same is bound to fail.
+                The "Signal-to-Noise" ratio in Web3 is notoriously poor. Users were paralyzed by a feed containing dense whitepapers alongside low-quality hype. Building a unified search for this required handling a "data soup" where a 20-page PDF and a 280-character announcement had to be weighed on the same scale of relevance.
               </p>
 
-              <h2 className="text-2xl font-semibold mb-4">Our Solution</h2>
+              <h2 className="text-2xl font-semibold mb-4">The Solution</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                We designed a solution based on an enhanced LLM and RAG architecture. We knew from the start that a simple retrieval system would be insufficient. The majority of the engineering effort was therefore focused on developing a series of custom enhancements, with advanced filtering logic and tag-based similarity.
+                We engineered a Multi-Stage Ranking System. Instead of simple keyword matching, we implemented a waterfall logic: first retrieving broad chunks, then re-ranking them based on freshness, semantic relevance, and source credibility. This allowed the system to answer "What is this new token?" with a precise summary of its whitepaper, ignoring the speculative noise surrounding it.
               </p>
 
               <h2 className="text-2xl font-semibold mb-4">Results</h2>
               <ul className="list-disc list-inside text-muted-foreground leading-relaxed space-y-2">
-                <li>Intelligent synthesis of insights from diverse information sources</li>
-                <li>Advanced filtering and relevance ranking for accurate results</li>
-                <li>Scalable architecture handling high-volume data streams</li>
-                <li>Significantly reduced research time for analysts</li>
+                <li><strong>+15% Retention</strong> in the novice onboarding funnel by removing the need to Google complex terms.</li>
+                <li><strong>Intent Discovery:</strong> Analyzed user queries to reveal real-time product interests, replacing "guesswork" analytics with direct voice-of-customer data.</li>
+                <li><strong>Ecosystem Lock-in:</strong> Shifted user behavior, making the tool their primary "window to the web".</li>
               </ul>
             </div>
           </div>
