@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft } from 'lucide-react'
 
-export default function CustomerSentimentAnalysisCase() {
+export default function TrueSentimentCase() {
   return (
     <div className="min-h-screen">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -27,19 +27,19 @@ export default function CustomerSentimentAnalysisCase() {
 
           <div className="space-y-8">
             <div>
-              <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-balance">Customer Sentiment Analysis</h1>
-              <p className="text-xl text-muted-foreground mb-6">Real-time sentiment tracking system</p>
+              <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-balance">True Sentiment</h1>
+              <p className="text-xl text-muted-foreground mb-6">Deep-Context Influencer Auditing</p>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary">langchain</Badge>
-                <Badge variant="secondary">automation</Badge>
-                <Badge variant="secondary">data workflow</Badge>
+                <Badge variant="secondary">Sentiment Analysis</Badge>
+                <Badge variant="secondary">LLM</Badge>
+                <Badge variant="secondary">Marketing</Badge>
               </div>
             </div>
 
             <div className="aspect-video w-full overflow-hidden rounded-lg bg-muted">
               <img
                 src="/sentiment-heatmap-visualization.jpg"
-                alt="Customer Sentiment Analysis"
+                alt="True Sentiment"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -47,23 +47,19 @@ export default function CustomerSentimentAnalysisCase() {
             <div className="prose prose-invert max-w-none">
               <h2 className="text-2xl font-semibold mb-4">The Challenge</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                A consumer brand was struggling to understand customer sentiment across dozens of channels - social media, support tickets, reviews, and forums. Manual monitoring was slow and inconsistent, causing them to miss emerging issues until they became crises.
+                Standard sentiment analysis tools are notoriously bad at context. If a fan comments "I love you!" on a sponsored post, legacy tools count that as a win for the brand. In reality, that affection is directed at the creator, not the product. Our client was drowning in false positives, unable to distinguish between an audience that loved the influencer and an audience that actually wanted to buy the product.
               </p>
 
-              <h2 className="text-2xl font-semibold mb-4">Our Solution</h2>
+              <h2 className="text-2xl font-semibold mb-4">The Solution</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                We built a comprehensive sentiment analysis system that monitors and analyzes customer feedback in real-time across all channels. Using LLMs and custom classification models, the system identifies sentiment trends, emerging issues, and critical feedback that requires immediate attention.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                The platform includes automated alerts for negative sentiment spikes, topic clustering to identify common themes, and executive dashboards for strategic oversight.
+                We built a Multi-Vector Sentiment Engine. Instead of a binary "Positive/Negative" score, we parsed comments into three distinct streams: Creator Sentiment ("I love this guy"), Product Sentiment ("This drink looks gross"), and Narrative Sentiment ("This ad was actually funny"). This allowed us to mathematically isolate the brand's performance from the influencer's popularity.
               </p>
 
               <h2 className="text-2xl font-semibold mb-4">Results</h2>
               <ul className="list-disc list-inside text-muted-foreground leading-relaxed space-y-2">
-                <li>Real-time monitoring of 50,000+ customer interactions daily</li>
-                <li>72% faster response time to negative sentiment trends</li>
-                <li>Identified and resolved 3 potential PR crises before escalation</li>
-                <li>Improved Net Promoter Score by 15 points in 6 months</li>
+                <li><strong>Automated the identification of low-effort content</strong> that technically met guidelines but failed to deliver value.</li>
+                <li><strong>Allowed the client to enforce content guidelines intelligently</strong> - offering leeway to high-performing evangelists.</li>
+                <li><strong>Mapped specific product lines to creator niches.</strong></li>
               </ul>
             </div>
           </div>
