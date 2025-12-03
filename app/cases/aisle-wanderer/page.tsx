@@ -28,11 +28,11 @@ export default function AisleWandererCase() {
           <div className="space-y-8">
             <div>
               <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-balance">Aisle Wanderer</h1>
-              <p className="text-xl text-muted-foreground mb-6">a product similarity engine</p>
+              <p className="text-xl text-muted-foreground mb-6">Autonomous Substitution Engine</p>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary">fine-tuning</Badge>
-                <Badge variant="secondary">ai transformation</Badge>
-                <Badge variant="secondary">langchain</Badge>
+                <Badge variant="secondary">E-commerce</Badge>
+                <Badge variant="secondary">Smart Search</Badge>
+                <Badge variant="secondary">LLM</Badge>
               </div>
             </div>
 
@@ -47,23 +47,25 @@ export default function AisleWandererCase() {
             <div className="prose prose-invert max-w-none">
               <h2 className="text-2xl font-semibold mb-4">The Challenge</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                In e-commerce, showing a user ten similar items is standard practice. In groceries, it's a disaster. With 20+ items per cart, this approach creates massive cognitive load, causing users to abandon purchases and shrinking the transaction value.
+                Standard search engines tolerate noise; if a user searches for "honey" and sees "honey shampoo" in the mix, they just ignore it. But for automatic cart substitution, precision is binary.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                The challenge was to get the first product suggestion right, every time.
+                The "Repeat Cart" engine - intended to be a key driver for recurring revenue - was backfiring. Because existing algorithms matched keywords without understanding context, they frequently substituted fresh lemons with lemon-scented dish soap. This forced users to manually audit every single automated choice, defeating the entire purpose of convenience and causing them to abandon the workflow entirely.
               </p>
 
-              <h2 className="text-2xl font-semibold mb-4">Our Solution</h2>
+              <h2 className="text-2xl font-semibold mb-4">The Solution</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                We solved this by creating a dynamic, LLM-based taxonomy from the ground up. This system learned the deep attributes of several million grocery SKUs, allowing it to make highly accurate, single best-match recommendations that traditional ML models couldn't.
+                We moved beyond keyword matching by building a Dynamic Taxonomy Engine. While retail giants spend millions on manual data tagging, we automated this using LLMs to generate deep, context-aware tag clouds for millions of SKUs.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                This system introduced "common sense" to the inventory - parsing the difference between an item's descriptive tags and its actual utility, automatically filtering out matches that are technically similar but practically irrelevant.
               </p>
 
               <h2 className="text-2xl font-semibold mb-4">Results</h2>
               <ul className="list-disc list-inside text-muted-foreground leading-relaxed space-y-2">
-                <li>Single-item recommendation accuracy that outperformed traditional similarity engines</li>
-                <li>Reduced cognitive load for users during the shopping experience</li>
-                <li>Increased transaction values through more relevant product suggestions</li>
-                <li>Scalable system handling millions of grocery SKUs</li>
+                <li><strong>94% User Acceptance Rate</strong> on automated substitutions (vs. 70% industry baseline).</li>
+                <li><strong>Revitalized the "Repeat Order" feature</strong>, turning a broken touchpoint into a reliable revenue driver.</li>
+                <li><strong>Automated Taxonomy:</strong> Achieved enterprise-grade categorization depth without the manual labor costs usually required to maintain it.</li>
               </ul>
             </div>
           </div>
