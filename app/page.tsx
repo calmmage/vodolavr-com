@@ -96,17 +96,41 @@ export default function HomePage() {
   const [isAnimating, setIsAnimating] = useState(false)
   const casesRef = useRef<HTMLElement>(null)
 
-  // Rotate badges every 2 seconds
+  const [displayedText, setDisplayedText] = useState("")
+  const [isTyping, setIsTyping] = useState(true)
+
+  // Typewriter effect
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAnimating(true)
-      setTimeout(() => {
+    const currentLabel = heroBadges[currentBadgeIndex].label
+
+    if (isTyping) {
+      // Typing out
+      if (displayedText.length < currentLabel.length) {
+        const timeout = setTimeout(() => {
+          setDisplayedText(currentLabel.slice(0, displayedText.length + 1))
+        }, 150)
+        return () => clearTimeout(timeout)
+      } else {
+        // Done typing, wait then start deleting
+        const timeout = setTimeout(() => {
+          setIsTyping(false)
+        }, 2000)
+        return () => clearTimeout(timeout)
+      }
+    } else {
+      // Deleting
+      if (displayedText.length > 0) {
+        const timeout = setTimeout(() => {
+          setDisplayedText(displayedText.slice(0, -1))
+        }, 75)
+        return () => clearTimeout(timeout)
+      } else {
+        // Done deleting, move to next badge
         setCurrentBadgeIndex((prev) => (prev + 1) % heroBadges.length)
-        setIsAnimating(false)
-      }, 200)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
+        setIsTyping(true)
+      }
+    }
+  }, [displayedText, isTyping, currentBadgeIndex])
 
   const handleBadgeClick = () => {
     const badge = heroBadges[currentBadgeIndex]
@@ -129,12 +153,11 @@ export default function HomePage() {
               <span>VodoLavr</span>
               <button
                 onClick={handleBadgeClick}
-                className={`ml-4 w-[130px] lg:w-[180px] text-left bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient hover:opacity-80 transition-opacity cursor-pointer ${
-                  isAnimating ? "opacity-0" : "opacity-100"
-                }`}
+                className="ml-4 w-[130px] lg:w-[180px] text-left bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient hover:opacity-80 transition-opacity cursor-pointer"
                 title={`Click to see ${heroBadges[currentBadgeIndex].label} cases`}
               >
-                {heroBadges[currentBadgeIndex].label}
+                <span>{displayedText}</span>
+                <span className="text-white animate-blink">_</span>
               </button>
             </h1>
             <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto text-balance">
