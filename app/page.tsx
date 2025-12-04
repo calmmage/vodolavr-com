@@ -125,16 +125,16 @@ export default function HomePage() {
       <section id="home" className="h-screen flex items-center justify-center px-6 lg:px-8">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center space-y-6">
-            <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-balance flex items-center justify-center gap-4">
+            <h1 className="text-5xl lg:text-7xl font-bold tracking-tight inline-flex items-center">
               <span>VodoLavr</span>
               <button
                 onClick={handleBadgeClick}
-                className={`inline-flex items-center justify-center min-w-[100px] lg:min-w-[120px] px-4 py-2 rounded-lg bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 hover:border-primary/60 transition-all duration-200 cursor-pointer ${
-                  isAnimating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
+                className={`ml-4 w-[130px] lg:w-[180px] text-left bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient hover:opacity-80 transition-opacity cursor-pointer ${
+                  isAnimating ? "opacity-0" : "opacity-100"
                 }`}
                 title={`Click to see ${heroBadges[currentBadgeIndex].label} cases`}
               >
-                <span className="text-2xl lg:text-3xl font-bold">{heroBadges[currentBadgeIndex].label}</span>
+                {heroBadges[currentBadgeIndex].label}
               </button>
             </h1>
             <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto text-balance">
