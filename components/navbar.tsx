@@ -8,10 +8,11 @@ export function Navbar() {
   const pathname = usePathname()
 
   const links = [
-    { href: "#home", label: "Home" },
-    { href: "#services", label: "Services" },
-    { href: "#cases", label: "Cases" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#home", label: "Home" },
+    { href: "/#services", label: "Services" },
+    { href: "/#cases", label: "Cases" },
+    { href: "/about", label: "About" },
+    { href: "/#contact", label: "Contact" },
   ]
 
   return (

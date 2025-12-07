@@ -89,52 +89,95 @@ const tagGroups = {
   Goal: ["ai transformation", "data workflow", "fine-tuning", "automation"],
 }
 
-// FAQ JSON-LD schema
+// FAQ data for both schema and display
+const faqData = [
+  {
+    question: "What AI consulting services does VodoLavr offer?",
+    answer: "VodoLavr offers AI Strategy Consulting, LLM Integration, Prompt Engineering, Infrastructure Setup, Team Training, and Continuous Improvement services. We help companies integrate AI and large language models into their operations."
+  },
+  {
+    question: "What is the consulting rate for VodoLavr?",
+    answer: "Our consulting rate is $1,200 per hour. For simple cases, you can book a call directly. For complex projects, reach out via our contact form."
+  },
+  {
+    question: "Who are the founders of VodoLavr?",
+    answer: "VodoLavr was founded by Petr Lavrov (Staff LLM Engineer, Ex-Google, Ex-Yandex) and Mikhail Vodolagin (CDO, CEO with expertise in scaling businesses and implementing transformative technology strategies)."
+  },
+  {
+    question: "What technologies does VodoLavr work with?",
+    answer: "VodoLavr works with various AI technologies including LangChain, OpenAI API, n8n, RAG (Retrieval-Augmented Generation), fine-tuning, voice AI, and conversational AI systems."
+  },
+  {
+    question: "What results can I expect from AI consulting?",
+    answer: "Results vary by project but our case studies show outcomes like 80% automated query resolution, 75% reduction in processing time, 3x increase in user engagement, and 25% reduction in inventory costs through AI-powered solutions."
+  }
+]
+
+// FAQ JSON-LD schema with dateModified
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What AI consulting services does VodoLavr offer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "VodoLavr offers AI Strategy Consulting, LLM Integration, Prompt Engineering, Infrastructure Setup, Team Training, and Continuous Improvement services. We help companies integrate AI and large language models into their operations."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the consulting rate for VodoLavr?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our consulting rate is $1,200 per hour. For simple cases, you can book a call directly. For complex projects, reach out via our contact form."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Who are the founders of VodoLavr?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "VodoLavr was founded by Petr Lavrov (Staff LLM Engineer, Ex-Google, Ex-Yandex) and Mikhail Vodolagin (CDO, CEO with expertise in scaling businesses and implementing transformative technology strategies)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What technologies does VodoLavr work with?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "VodoLavr works with various AI technologies including LangChain, OpenAI API, n8n, RAG (Retrieval-Augmented Generation), fine-tuning, voice AI, and conversational AI systems."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What results can I expect from AI consulting?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Results vary by project but our case studies show outcomes like 80% automated query resolution, 75% reduction in processing time, 3x increase in user engagement, and 25% reduction in inventory costs through AI-powered solutions."
-      }
+  "dateModified": "2025-12-07",
+  "mainEntity": faqData.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
     }
-  ]
+  }))
+}
+
+// Services data for both schema and display
+const servicesData = [
+  {
+    title: "AI Strategy Consulting",
+    description: "We work with your team to identify high-impact AI opportunities and create actionable roadmaps.",
+  },
+  {
+    title: "LLM Integration",
+    description: "Deploy large language models tailored to your specific use cases and requirements.",
+  },
+  {
+    title: "Prompt Engineering",
+    description: "Design effective prompts and workflows to maximize AI system performance and reliability.",
+  },
+  {
+    title: "Infrastructure Setup",
+    description: "Build scalable, secure infrastructure for your AI applications from the ground up.",
+  },
+  {
+    title: "Team Training",
+    description: "Equip your team with the knowledge and skills to work effectively with AI technologies.",
+  },
+  {
+    title: "Continuous Improvement",
+    description: "Monitor, analyze, and optimize your AI systems for peak performance over time.",
+  },
+]
+
+// Service schema for individual services
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "AI Consulting",
+  "provider": {
+    "@type": "Organization",
+    "name": "VodoLavr"
+  },
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AI Consulting Services",
+    "itemListElement": servicesData.map((service, index) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": service.title,
+        "description": service.description
+      }
+    }))
+  }
 }
 
 export default function HomePage() {
@@ -193,6 +236,10 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <ParticleBackground />
       <Navbar />
@@ -294,45 +341,24 @@ export default function HomePage() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">What We Help You With</h2>
-            <p className="text-lg text-muted-foreground">Practical AI solutions for real business challenges</p>
+            <p className="text-lg text-muted-foreground">
+              Practical <strong>AI solutions</strong> for real business challenges
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            {[
-              {
-                title: "AI Strategy Consulting",
-                description: "We work with your team to identify high-impact AI opportunities and create actionable roadmaps.",
-              },
-              {
-                title: "LLM Integration",
-                description: "Deploy large language models tailored to your specific use cases and requirements.",
-              },
-              {
-                title: "Prompt Engineering",
-                description:
-                  "Design effective prompts and workflows to maximize AI system performance and reliability.",
-              },
-              {
-                title: "Infrastructure Setup",
-                description: "Build scalable, secure infrastructure for your AI applications from the ground up.",
-              },
-              {
-                title: "Team Training",
-                description: "Equip your team with the knowledge and skills to work effectively with AI technologies.",
-              },
-              {
-                title: "Continuous Improvement",
-                description: "Monitor, analyze, and optimize your AI systems for peak performance over time.",
-              },
-            ].map((item, i) => (
-              <Card key={i} className="bg-card border-border">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                </CardContent>
-              </Card>
+          {/* Services as semantic list */}
+          <ul className="grid md:grid-cols-3 gap-6 mb-16 list-none p-0">
+            {servicesData.map((item, i) => (
+              <li key={i}>
+                <Card className="bg-card border-border h-full">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                  </CardContent>
+                </Card>
+              </li>
             ))}
-          </div>
+          </ul>
 
           {/* CTA */}
           <div className="bg-accent/30 rounded-lg p-12 text-center">
@@ -680,6 +706,29 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* FAQ Section - visible for users and AI */}
+      <section id="faq" className="py-20 px-6 lg:px-8">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-muted-foreground">
+              Common questions about our <strong>AI consulting</strong> services
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {faqData.map((item, i) => (
+              <Card key={i} className="bg-card border-border">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-3">{item.question}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.answer}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="py-20 px-6 lg:px-8">
         <div className="container mx-auto max-w-3xl">
           <div className="text-center mb-12">
@@ -763,7 +812,7 @@ export default function HomePage() {
         <div className="container mx-auto max-w-5xl">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground">© 2025 VodoLavr. All rights reserved.</p>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center flex-wrap justify-center gap-6">
               <a href="#home" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Home
               </a>
@@ -773,15 +822,18 @@ export default function HomePage() {
               <a href="#cases" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Cases
               </a>
+              <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                About
+              </Link>
               <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Contact
               </a>
-              <a href="/canvas/journey" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Journey Builder
-              </a>
-              <a href="/canvas/builder" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Workflow Builder
-              </a>
+              <Link href="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Terms
+              </Link>
+              <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Privacy
+              </Link>
             </div>
           </div>
         </div>

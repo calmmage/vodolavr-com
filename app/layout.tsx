@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
 }
 
-// Organization JSON-LD schema
+// Organization JSON-LD schema with dateModified for freshness
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -57,6 +57,12 @@ const organizationSchema = {
   "priceRange": "$1,200/hour",
   "areaServed": "Worldwide",
   "serviceType": ["AI Consulting", "LLM Integration", "Machine Learning", "Automation"],
+  "foundingDate": "2024",
+  "dateModified": "2025-12-07",
+  "sameAs": [
+    "https://calendly.com/petr-vodolavr",
+    "https://calendly.com/mikhail-vodolavr"
+  ],
   "founder": [
     {
       "@type": "Person",
