@@ -1,10 +1,20 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft } from 'lucide-react'
 
-const casesData: Record<string, any> = {
+interface CaseStudy {
+  title: string
+  description: string
+  tags: string[]
+  challenge: string
+  solution: string
+  results: string[]
+}
+
+const casesData: Record<string, CaseStudy> = {
   "retail-ai-assistant": {
     title: "Retail AI Assistant",
     description: "Built an intelligent customer support system that handles 80% of queries automatically",
@@ -97,6 +107,64 @@ const casesData: Record<string, any> = {
   },
 }
 
+// Generate metadata for each case study page
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const caseStudy = casesData[id]
+
+  if (!caseStudy) {
+    return {
+      title: 'Case Study Not Found - VodoLavr',
+    }
+  }
+
+  return {
+    title: `${caseStudy.title} - Case Study | VodoLavr`,
+    description: caseStudy.description,
+    openGraph: {
+      title: `${caseStudy.title} - Case Study | VodoLavr`,
+      description: caseStudy.description,
+      type: 'article',
+      url: `https://vodolavr.com/cases/${id}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${caseStudy.title} - Case Study | VodoLavr`,
+      description: caseStudy.description,
+    },
+    alternates: {
+      canonical: `/cases/${id}`,
+    },
+  }
+}
+
+// Generate Article JSON-LD schema for case study
+function generateArticleSchema(id: string, caseStudy: CaseStudy) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": caseStudy.title,
+    "description": caseStudy.description,
+    "url": `https://vodolavr.com/cases/${id}`,
+    "author": {
+      "@type": "Organization",
+      "name": "VodoLavr",
+      "url": "https://vodolavr.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VodoLavr",
+      "url": "https://vodolavr.com"
+    },
+    "articleSection": "Case Study",
+    "keywords": caseStudy.tags.join(", "),
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://vodolavr.com/cases/${id}`
+    }
+  }
+}
+
 export default async function CasePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const caseStudy = casesData[id]
@@ -105,8 +173,14 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
     return <div className="min-h-screen pt-32 px-6">Case not found</div>
   }
 
+  const articleSchema = generateArticleSchema(id, caseStudy)
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       {/* Header */}
       <section className="pt-32 pb-16 px-6 lg:px-8">
         <div className="container mx-auto max-w-4xl">

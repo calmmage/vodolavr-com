@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow internal tools
+Disallow: /canvas/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://vodolavr.com/sitemap.xml
