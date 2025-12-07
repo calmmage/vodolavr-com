@@ -89,6 +89,54 @@ const tagGroups = {
   Goal: ["ai transformation", "data workflow", "fine-tuning", "automation"],
 }
 
+// FAQ JSON-LD schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What AI consulting services does VodoLavr offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VodoLavr offers AI Strategy Consulting, LLM Integration, Prompt Engineering, Infrastructure Setup, Team Training, and Continuous Improvement services. We help companies integrate AI and large language models into their operations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the consulting rate for VodoLavr?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our consulting rate is $1,200 per hour. For simple cases, you can book a call directly. For complex projects, reach out via our contact form."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who are the founders of VodoLavr?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VodoLavr was founded by Petr Lavrov (Staff LLM Engineer, Ex-Google, Ex-Yandex) and Mikhail Vodolagin (CDO, CEO with expertise in scaling businesses and implementing transformative technology strategies)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What technologies does VodoLavr work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VodoLavr works with various AI technologies including LangChain, OpenAI API, n8n, RAG (Retrieval-Augmented Generation), fine-tuning, voice AI, and conversational AI systems."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What results can I expect from AI consulting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Results vary by project but our case studies show outcomes like 80% automated query resolution, 75% reduction in processing time, 3x increase in user engagement, and 25% reduction in inventory costs through AI-powered solutions."
+      }
+    }
+  ]
+}
+
 export default function HomePage() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
   const [showAllCases, setShowAllCases] = useState(false)
@@ -142,6 +190,10 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <ParticleBackground />
       <Navbar />
 

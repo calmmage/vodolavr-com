@@ -1,0 +1,82 @@
+# VodoLavr - AI Transformation & LLM Consulting
+
+> VodoLavr helps companies integrate AI and large language models into their operations without the buzzwords.
+
+## About
+
+VodoLavr is an AI consulting firm specializing in practical AI solutions for real business challenges. We offer expert consulting services at $1,200/hour.
+
+## Team
+
+- **Petr Lavrov** - Staff LLM Engineer, Ex-Google, Ex-Yandex. Bringing years of experience from leading tech companies to solve complex AI challenges.
+- **Mikhail Vodolagin** - CDO, CEO, Startups. Expert in scaling businesses and implementing transformative technology strategies.
+
+## Services
+
+- **AI Strategy Consulting**: We work with your team to identify high-impact AI opportunities and create actionable roadmaps.
+- **LLM Integration**: Deploy large language models tailored to your specific use cases and requirements.
+- **Prompt Engineering**: Design effective prompts and workflows to maximize AI system performance and reliability.
+- **Infrastructure Setup**: Build scalable, secure infrastructure for your AI applications from the ground up.
+- **Team Training**: Equip your team with the knowledge and skills to work effectively with AI technologies.
+- **Continuous Improvement**: Monitor, analyze, and optimize your AI systems for peak performance over time.
+
+## Case Studies
+
+### Retail AI Assistant
+Built an intelligent customer support system that handles 80% of queries automatically.
+- Tags: LangChain, AI transformation, automation, chat
+- Results: 80% automated query resolution, response time reduced from 4 hours to 30 seconds
+
+### Aisle Wanderer
+Product similarity engine using LLM-based taxonomy for accurate single-item grocery recommendations.
+- Tags: OpenAI API, AI transformation, fine-tuning
+
+### Document Processing Pipeline
+Automated contract analysis and data extraction for legal firm.
+- Tags: n8n, data workflow, automation
+- Results: 75% reduction in processing time, 99% accuracy
+
+### AI Quality Control for Sales Floor
+Automated system using LLMs to monitor and analyze sales conversations against brand guidelines.
+- Tags: AI transformation, automation, LangChain, voice
+
+### Content Recommendation Engine
+Fine-tuned model for personalized content suggestions with 3x engagement.
+- Tags: fine-tuning, AI transformation
+- Results: 3x engagement increase, 45% longer sessions
+
+### Signal
+Intelligent research assistant using enhanced LLM and RAG to synthesize insights from diverse sources.
+- Tags: LangChain, chat, AI transformation, data workflow
+
+### Supply Chain Optimization
+ML-powered demand forecasting reducing inventory costs by 25%.
+- Tags: AI transformation, data workflow
+- Results: 25% cost reduction, 60% fewer stockouts
+
+### Customer Sentiment Analysis
+Real-time sentiment tracking across social media and support channels.
+- Tags: LangChain, automation, data workflow
+- Results: Real-time tracking across 10+ channels
+
+### Enterprise Workflow Automation
+Connected 15+ tools with intelligent routing and decision-making.
+- Tags: n8n, automation, AI transformation
+- Results: 70% reduction in manual processes
+
+## Contact
+
+- Website: https://vodolavr.com
+- Email: hello@vodolavr.com
+- Book a call with Petr: https://calendly.com/petr-vodolavr
+- Book a call with Mikhail: https://calendly.com/mikhail-vodolavr
+
+## Technologies
+
+- LangChain
+- OpenAI API
+- n8n
+- RAG (Retrieval-Augmented Generation)
+- Fine-tuning
+- Voice AI
+- Chat/Conversational AI
